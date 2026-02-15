@@ -5,7 +5,7 @@ Yksinkertainen Android-sääsovellus, joka hakee säätietoja API-rajapinnan avu
 
 # Video
 
-https://www.youtube.com/shorts/0V7TeZ-aSnw
+https://www.youtube.com/shorts/MyJ_LzqdlQ4?feature=shared
 
 # Retrofit
 Retrofit hoitaa HTTP-pyyntöjen hallinnan. Eli se muodostaa URL:n automaattisesti jolla haetaan sitten HTTP GET-pyyntöä ja palauttaa vastauksen Kotlin-oliona
