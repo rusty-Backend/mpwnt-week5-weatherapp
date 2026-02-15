@@ -77,7 +77,6 @@ fun WeatherScreen(
                 }
             }
 
-            // State 3: Success - show weather data
             uiState.weatherData != null -> {
                 WeatherResultSection(
                     weatherResponse = uiState.weatherData!!
@@ -87,11 +86,6 @@ fun WeatherScreen(
     }
 }
 
-/**
- * Composable that displays the weather results
- *
- * Separated into its own function to keep code organized
- */
 @Composable
 fun WeatherResultSection(
     weatherResponse: com.example.week5.data.model.WeatherResponse
@@ -106,7 +100,7 @@ fun WeatherResultSection(
                 .padding(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            // Location name
+
             Text(
                 text = weatherResponse.location.name,
                 style = MaterialTheme.typography.headlineMedium
@@ -120,13 +114,11 @@ fun WeatherResultSection(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Temperature
             Text(
                 text = "${weatherResponse.current.tempC}°C",
                 style = MaterialTheme.typography.displayLarge
             )
 
-            // Condition
             Text(
                 text = weatherResponse.current.condition.text,
                 style = MaterialTheme.typography.titleMedium
@@ -134,12 +126,10 @@ fun WeatherResultSection(
 
             Spacer(modifier = Modifier.height(24.dp))
 
-            // Additional details
             Divider()
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            // Feels like temperature
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -150,7 +140,6 @@ fun WeatherResultSection(
 
             Spacer(modifier = Modifier.height(8.dp))
 
-            // Humidity
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
@@ -160,8 +149,7 @@ fun WeatherResultSection(
             }
 
             Spacer(modifier = Modifier.height(8.dp))
-
-            // Wind speed
+            
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
