@@ -3,6 +3,10 @@
 # Viikkotehtävä 5: Sääsovellus
 Yksinkertainen Android-sääsovellus, joka hakee säätietoja API-rajapinnan avulla. HUOM: Tehtävän ohjeistuksesta poiketen käyntin WeatherAPI.com rajapintaa enkä OpenWeatherMap-rajapintaa, koska en löytänyt (tämä oli nyt puhtaasti skill issue) OpenWeatherin sivuilta sellaista API-avainta joka ei olisi vaatinut maksutietoja, vaikka olisinkin ollut ilmainen. WeatherAPI ei pyytänyt maksutietoja joten päädyin käyttämään sitä. Toimintaperiaate on kuitenkin molemmissa sama!
 
+# Video
+
+https://www.youtube.com/shorts/0V7TeZ-aSnw
+
 # Retrofit
 Retrofit hoitaa HTTP-pyyntöjen hallinnan. Eli se muodostaa URL:n automaattisesti jolla haetaan sitten HTTP GET-pyyntöä ja palauttaa vastauksen Kotlin-oliona
 -> baseurl + "current.json?=q=Helsinki&key=xxx"
@@ -106,6 +110,7 @@ when {
     uiState.weatherData != null -> WeatherDisplay()
 }
 ````
+```
 Käyttäjä → Button click → ViewModel.fetchWeather()
     ↓
 ViewModel päivittää: _uiState.value = UiState(isLoading = true)
@@ -123,6 +128,7 @@ collectAsState() havaitsee muutoksen
 Compose suorittaa UI:n uudelleen
     ↓
 UI näyttää: Säätiedot
+```
 
 collectAsState kuuntelee StateFlown muutoksia. Kun Viewmodel mututaa _uiState.value, niin Compose havaitsee sen. Sitten Composable suoritetaan uudelleen automaattisesti ja UI päivittyy vastaamaan uutta tilaa
 
@@ -142,6 +148,7 @@ val response = RetrofitInstance.api.getCurrentWeather(
 )
 ````
 # Rakenne
+```
 app/src/main/java/com/example/week5/
 ├── data/
 │   ├── model/
@@ -154,5 +161,4 @@ app/src/main/java/com/example/week5/
 ├── ui/
 │   └── WeatherScreen.kt           # Compose UI
 └── MainActivity.kt                # Entry point
-
-
+```
