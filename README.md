@@ -25,7 +25,7 @@ object RetrofitInstance {
 # JSON/GSON
 Gson muuttaa JSON-datan automaattisesti Kotlin dataluokaksi
 
-```
+```json
 {
   "location": {
     "name": "Helsinki",
