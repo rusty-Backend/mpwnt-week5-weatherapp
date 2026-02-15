@@ -52,7 +52,6 @@ class WeatherViewModel : ViewModel() {
                 )
 
             } catch (e: Exception) {
-                // Show detailed error message
                 _uiState.value = UiState(
                     errorMessage = "Error: ${e.javaClass.simpleName}: ${e.message}",
                     isLoading = false

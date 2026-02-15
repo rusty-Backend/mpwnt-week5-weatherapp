@@ -9,25 +9,14 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.week5.ViewModel.WeatherViewModel
 
-/**
- * Main weather screen composable
- *
- * This is the UI that users see and interact with
- */
 @Composable
 fun WeatherScreen(
     viewModel: WeatherViewModel = viewModel()
 ) {
-    // Collect the UI state from ViewModel
-    // collectAsState() makes Compose watch the StateFlow
-    // Whenever uiState changes, this Composable will recompose (update)
     val uiState by viewModel.uiState.collectAsState()
 
-    // Remember the text field value
-    // This survives recomposition (when UI updates)
     var cityInput by remember { mutableStateOf("") }
 
-    // Main container
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -36,14 +25,12 @@ fun WeatherScreen(
         verticalArrangement = Arrangement.Top
     ) {
 
-        // Title
         Text(
             text = "Sääsovellus",
             style = MaterialTheme.typography.headlineLarge,
             modifier = Modifier.padding(bottom = 24.dp)
         )
 
-        // City input field
         OutlinedTextField(
             value = cityInput,
             onValueChange = { newValue ->
@@ -58,7 +45,6 @@ fun WeatherScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Search button
         Button(
             onClick = { viewModel.fetchWeather() },
             modifier = Modifier.fillMaxWidth()
@@ -68,16 +54,13 @@ fun WeatherScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
-        // Show different UI based on state
         when {
-            // State 1: Loading
             uiState.isLoading -> {
                 CircularProgressIndicator(
                     modifier = Modifier.size(50.dp)
                 )
             }
 
-            // State 2: Error
             uiState.errorMessage != null -> {
                 Card(
                     modifier = Modifier.fillMaxWidth(),
